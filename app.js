@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const registration = require('./routes/registration');
 const HttpError = require('./models/http-error');
+const port = process.env.PORT || 5000;
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.use((req, res, next) => {
   
 mongoose.connect('mongodb+srv://Arka:Arkadyuti@formdb.psrlp.mongodb.net/users?retryWrites=true&w=majority')
   .then(() => {
-    app.listen(5000);
+    app.listen(port);
   })
   .catch(err => {
     console.log(err);
