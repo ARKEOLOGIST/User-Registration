@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     res.json({ message: error.message || 'An unknown error occurred!' });
   });
   
-mongoose.connect('<insert mongodb sv string here>')
+mongoose.connect('mongodb+srv://Arka:Arkadyuti@formdb.psrlp.mongodb.net/users?retryWrites=true&w=majority')
   .then(() => {
     app.listen(5000);
   })
