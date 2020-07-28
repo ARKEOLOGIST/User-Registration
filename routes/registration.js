@@ -5,6 +5,13 @@ const usersController = require('../controllers/user-controller');
 
 const router = express.Router();
 
+router.use((req,res,next) => {
+  res.setHeader('Access-Control-Allow-Origin','*');
+  res.setHeader('Access-Control-Allow-Headers','*');
+  res.setHeader('Access-Control-Allow-Methods','*');
+  next();
+});
+
 router.post(
   '/registration',
   [
