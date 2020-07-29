@@ -10,7 +10,10 @@ const signup = async (req, res, next) => {
         new HttpError('Invalid inputs passed, please check your data.', 422)
       );
     }
-    const { name,address,phone_number,identity,reason } = req.body;
+    var { name,address,phone_number,identity,reason } = req.body;
+    
+    phone_number = parseInt(phone_number);
+    identity = parseInt(identity);
   
     let existingUser
     try {
