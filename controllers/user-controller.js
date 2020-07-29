@@ -11,13 +11,13 @@ const signup = async (req, res, next) => {
       );
     }
     const { name,address,phone_number,identity,reason } = req.body;
-    
-    let existingUser
+
+    let existingUser;
     try {
       existingUser = await User.findOne({ identity: identity })
     } catch (err) {
       const error = new HttpError(
-        'Signing up failed, please try again later.',
+        'Registering failed, please try later.',
         500
       );
       return next(error);
@@ -25,7 +25,7 @@ const signup = async (req, res, next) => {
     
     if (existingUser) {
       const error = new HttpError(
-        'User exists already, please login instead.',
+        'User exists already, please enter different details.',
         422
       );
       return next(error);
@@ -43,7 +43,7 @@ const signup = async (req, res, next) => {
       await createdUser.save();
     } catch (err) {
       const error = new HttpError(
-        'Signing up failed, please try again.',
+        'Registering failed, please try again.',
         500
       );
       return next(error);
